@@ -1,0 +1,352 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+@import url(https://fonts.googleapis.com/css?family=Changa+One);
+
+body {
+    height: 100%;
+}
+
+#sky {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#track {
+    width: 100%;
+    border-bottom: 50px solid #5e2f0d;
+    background: linear-gradient(to top, #37557d 8%, lightsteelblue 10%, white 95%, white 100%);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#track > img {
+    position: absolute;
+    bottom: 3px;
+}
+
+@keyframes fadeout {
+    from {}
+    to   {opacity: 0; display: none;}
+}
+
+.traffic-light {
+    display: inline-block;
+    position: absolute;
+    bottom: 25px;
+    background-color: #583f72;
+    border: 2px solid #583f72;
+    border-radius: 5px;
+    height: 14px;
+    width: 32px;
+    padding-left: 5px;
+}
+
+
+.traffic-light-support {
+    display: inline-block;
+    position: relative;
+    background-color: #292929;
+    height: 22px;
+    width: 5px;
+    top: -2px;
+    margin-left: 10px;
+}
+
+.light {
+    display: inline-block;
+    position: relative;
+    background-color: #292929;
+    border: 1px solid #292929;
+    border-radius: 4px;
+    height: 8px;
+    width: 8px;
+    margin: 0 2px 6px;
+    vertical-align: middle;
+}
+
+.left-light {
+    animation-name: leftLight;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.right-light {
+    animation-name: rightLight;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes leftLight {
+    0%   {background-color: yellow;  border: 1px solid yellow; box-shadow: 0 0 5px yellow;}
+    50%  {background-color: yellow;  border: 1px solid yellow; box-shadow: 0 0 5px yellow;}
+    51%  {background-color: #292929; border: 1px solid #292929; box-shadow: 0 0 0 #292929;}
+    100% {background-color: #292929; border: 1px solid #292929; box-shadow: 0 0 0 #292929;}
+}
+
+@keyframes rightLight {
+    0%   {background-color: #292929; border: 1px solid #292929; box-shadow: 0 0 0 #292929;}
+    50%  {background-color: #292929; border: 1px solid #292929; box-shadow: 0 0 0 #292929;}
+    51%  {background-color: yellow;  border: 1px solid yellow; box-shadow: 0 0 5px yellow;}
+    100% {background-color: yellow;  border: 1px solid yellow; box-shadow: 0 0 5px yellow;}
+}
+
+#infoboard {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+#nameboard {
+    font-family: 'Droid Sans Mono', 'Consolas', 'Lucida Console', monospace;
+    position: relative;
+    display: block;
+    padding: 10px 25px;
+    background-color: #efefef;
+    box-shadow: 3px 4px 6px #cecece;
+}
+
+#name {
+    font-family: 'Changa One', 'Droid Sans Mono', 'Consolas', 'Lucida Console', monospace;
+    font-size: 7rem;
+    /*font-weight: 600;*/
+    color: rgba(250, 250, 250, 0.8);
+    text-shadow: 3px 4px 6px #efefef, 0 0 0 #000, 3px 4px 6px #efefef;
+}
+
+::-moz-selection { background: lightsteelblue; color: #fff; text-shadow: none; }
+::selection { background: lightsteelblue; color: #fff; text-shadow: none; }
+
+.board {
+    display: block;
+    margin-top: 15px;
+}
+
+.board:first-of-type {
+    display: block;
+    margin-top: 0;
+}
+
+.navigation-btn {
+    font-family: 'Droid Sans Mono', 'Consolas', 'Lucida Console', monospace;
+    font-size: 20px;
+    color: #8a8a8a;
+    padding: 5px 10px;
+    background-color: #efefef;
+    box-shadow: 3px 4px 6px #cecece;
+    border: none;
+    width: 49.66%;
+    height: 40px;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-appearance: none;
+}
+
+.navigation-btn:focus,
+.navigation-btn:hover,
+.navigation-btn:active {
+    outline: none;
+}
+
+.navigation-btn:hover,
+.navigation-btn:active {
+    color: #efefef;
+}
+
+.navigation-btn:hover {
+    background-color: #8a8a8a;
+}
+
+.navigation-btn:active {
+    background-color: #8a8a8a;
+    box-shadow: inset 3px 4px 6px #6e6e6e;
+}
+
+.navigation-btn > .fa {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.content-panel {
+    font-family: 'Droid Sans Mono', 'Consolas', 'Lucida Console', monospace;
+    font-size: 16px;
+    line-height: 1.42857;
+    color: rgba(249, 249, 249, 0.6);
+    background-color: #6e6e6e;
+    padding: 10px 12px 30px 30px;
+    text-shadow: 1px 1px 1px #6e6e6e, 0 0 0 #000, 1px 1px 1px #6e6e6e;
+    box-shadow: 3px 4px 6px #555;
+    max-height: 0;
+    opacity: 0;
+    -webkit-transition:all .3s ease;
+    -moz-transition:all .3s ease;
+    -o-transition:all .3s ease;
+    transition:all .3s ease;
+}
+
+.content-panel.active {
+    max-height: 100%;
+    opacity: 1;
+}
+
+.content-panel-title {
+    display: table;
+    width: 100%;
+}
+
+button.collapse {
+    font-size: 24px;
+    color: rgba(249, 249, 249, 0.6);
+    background-color: transparent;
+    text-shadow: 1px 1px 1px #6e6e6e, 0 0 0 #000, 1px 1px 1px #6e6e6e;
+    border: none;
+    text-align: right;
+    line-height: 1;
+    position: relative;
+    float: right;
+    padding: 0 8px;
+ }
+
+button.collapse:focus,
+button.collapse:hover,
+button.collapse:active {
+    outline: none;
+}
+
+
+button.collapse:hover,
+button.collapse:active {
+    outline: none;
+    color: #363636;
+    text-shadow: none;
+}
+
+button.collapse:active {
+    outline: none;
+    color: #363636;
+    text-shadow: none;
+    box-shadow: inset 1px 1px 3px #363636;
+}
+
+footer {
+    font-family: 'Droid Sans Mono', 'Consolas', 'Lucida Console', monospace;
+    font-size: 10px;
+    color: #321907;
+    position: fixed;
+    bottom: 18px;
+    padding-left: 15px;
+}
+
+footer > a {
+    color: #48092d;
+    text-decoration: none;
+}
+
+/* alignment hack */
+.fa-li {
+    top: .26em;
+}
+
+@media only screen and (max-width: 768px) {
+    #infoboard {
+        /*position: fixed;*/
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    #nameboard {
+        padding: 10px 0;
+        box-shadow: 0 4px 6px #cecece;
+    }
+
+    #name {
+        font-size: 19vw;
+        text-align: center;
+        text-shadow: 2px 2px 4px #efefef, 0 0 0 #000, 2px 2px 4px #efefef;
+    }
+
+    .board {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .navigation-btn {
+        padding: 5px 0;
+        width: 49%;
+        height: 60px;
+    }
+
+    .navigation-btn > .fa {
+        font-size: 32px;
+        vertical-align: middle;
+    }
+
+    .content-panel {
+        font-size: 12px;
+        padding: 6px 10px 20px 12px;
+        box-shadow: 0 4px 8px #555;
+    }
+}
+
+@media only screen and (max-width: 200px) {
+    .navigation-btn {
+        width: 100%;
+        height: 60px;
+    }
+
+    .navigation-btn > .fa {
+        font-size: 32px;
+        vertical-align: middle;
+    }
+}
+
+@media only screen and (max-height: 450px) {
+    #contents {
+        position: fixed;
+        top: 10%;
+        left: 1%;
+        width: 98%;
+        z-index: 5000;
+    }
+
+    .content-panel {
+        color: rgba(249, 249, 249, 1);
+        background-color: rgba(110, 110, 110, 0.8);
+    }
+
+    button.collapse {
+        color: rgba(249, 249, 249, 1);
+    }
+}
+
+@media only screen and (max-height: 340px) {
+
+    #name {
+        font-size: 4vw;
+        text-align: center;
+        text-shadow: 1px 1px 2px #efefef, 0 0 0 #000, 1px 1px 2px #efefef;
+    }
+
+    #contents {
+        position: fixed;
+        top: 2%;
+        left: 1%;
+        width: 98%;
+        z-index: 5000;
+    }
+
+    .navigation-btn {
+        width: 49%;
+        height: 40px;
+        box-shadow: 3px 4px 6px #cecece;
+    }
+
+    .navigation-btn > .fa {
+        font-size: 24px;
+        vertical-align: middle;
+    }
+}
